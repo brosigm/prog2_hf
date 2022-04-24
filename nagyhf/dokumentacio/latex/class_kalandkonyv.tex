@@ -1,0 +1,110 @@
+\hypertarget{class_kalandkonyv}{}\doxysection{Kalandkonyv Class Reference}
+\label{class_kalandkonyv}\index{Kalandkonyv@{Kalandkonyv}}
+Inheritance diagram for Kalandkonyv\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kalandkonyv}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_kalandkonyv_af43f82a56b0a2d9f6eeed97c3050bfc5}{Kalandkonyv}} (const \mbox{\hyperlink{class_string}{String}} \&cim, int ev, int oldalszam, int korhatar)
+\item 
+\mbox{\hyperlink{class_kalandkonyv_a9bb60e78fdaae25657b618a7c893618d}{Kalandkonyv}} (const \mbox{\hyperlink{class_kalandkonyv}{Kalandkonyv}} \&k)
+\begin{DoxyCompactList}\small\item\em Másoló konstruktor, ami egy kalandkönyv adatait másolja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kalandkonyv_ab21c5d8d187831b1e773df7197265625}{set\+Korhatar}} (int korhatar)
+\begin{DoxyCompactList}\small\item\em Setter függvény a könyv korhatárához. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_kalandkonyv_a79d189a2f5f7e69115fe89e3366f5e65}{get\+Korhatar}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény a könyv korhatárához. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kalandkonyv_a9980d266a73420f3558f16bed0db0d34}{kiir}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Kiírja a könyv adatait. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_kalandkonyv_af43f82a56b0a2d9f6eeed97c3050bfc5}\label{class_kalandkonyv_af43f82a56b0a2d9f6eeed97c3050bfc5}} 
+\index{Kalandkonyv@{Kalandkonyv}!Kalandkonyv@{Kalandkonyv}}
+\index{Kalandkonyv@{Kalandkonyv}!Kalandkonyv@{Kalandkonyv}}
+\doxysubsubsection{\texorpdfstring{Kalandkonyv()}{Kalandkonyv()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Kalandkonyv\+::\+Kalandkonyv (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_string}{String}} \&}]{cim,  }\item[{int}]{ev,  }\item[{int}]{oldalszam,  }\item[{int}]{korhatar }\end{DoxyParamCaption})}
+
+Konstruktor. 
+\begin{DoxyParams}{Parameters}
+{\em cim} & A könyv címe. \\
+\hline
+{\em ev} & A könyv kiadásának éve. \\
+\hline
+{\em oldalszam} & A könyv oldalainak száma. \\
+\hline
+{\em korhatar} & A könyv korhatárát tárolja. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_kalandkonyv_a9bb60e78fdaae25657b618a7c893618d}\label{class_kalandkonyv_a9bb60e78fdaae25657b618a7c893618d}} 
+\index{Kalandkonyv@{Kalandkonyv}!Kalandkonyv@{Kalandkonyv}}
+\index{Kalandkonyv@{Kalandkonyv}!Kalandkonyv@{Kalandkonyv}}
+\doxysubsubsection{\texorpdfstring{Kalandkonyv()}{Kalandkonyv()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Kalandkonyv\+::\+Kalandkonyv (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kalandkonyv}{Kalandkonyv}} \&}]{k }\end{DoxyParamCaption})}
+
+
+
+Másoló konstruktor, ami egy kalandkönyv adatait másolja. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & -\/ \mbox{\hyperlink{class_kalandkonyv}{Kalandkonyv}}, ami másolódik. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_kalandkonyv_a79d189a2f5f7e69115fe89e3366f5e65}\label{class_kalandkonyv_a79d189a2f5f7e69115fe89e3366f5e65}} 
+\index{Kalandkonyv@{Kalandkonyv}!getKorhatar@{getKorhatar}}
+\index{getKorhatar@{getKorhatar}!Kalandkonyv@{Kalandkonyv}}
+\doxysubsubsection{\texorpdfstring{getKorhatar()}{getKorhatar()}}
+{\footnotesize\ttfamily int Kalandkonyv\+::get\+Korhatar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter függvény a könyv korhatárához. 
+
+\begin{DoxyReturn}{Returns}
+int -\/ a könyv korhatára. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_kalandkonyv_a9980d266a73420f3558f16bed0db0d34}\label{class_kalandkonyv_a9980d266a73420f3558f16bed0db0d34}} 
+\index{Kalandkonyv@{Kalandkonyv}!kiir@{kiir}}
+\index{kiir@{kiir}!Kalandkonyv@{Kalandkonyv}}
+\doxysubsubsection{\texorpdfstring{kiir()}{kiir()}}
+{\footnotesize\ttfamily void Kalandkonyv\+::kiir (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Kiírja a könyv adatait. 
+
+\begin{DoxyReturn}{Returns}
+standard kimenet a kiírás helye, nincs visszatérési érték. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_konyv_a65474b462f9aeca04cbe54a696ccb44a}{Konyv}}.
+
+\mbox{\Hypertarget{class_kalandkonyv_ab21c5d8d187831b1e773df7197265625}\label{class_kalandkonyv_ab21c5d8d187831b1e773df7197265625}} 
+\index{Kalandkonyv@{Kalandkonyv}!setKorhatar@{setKorhatar}}
+\index{setKorhatar@{setKorhatar}!Kalandkonyv@{Kalandkonyv}}
+\doxysubsubsection{\texorpdfstring{setKorhatar()}{setKorhatar()}}
+{\footnotesize\ttfamily void Kalandkonyv\+::set\+Korhatar (\begin{DoxyParamCaption}\item[{int}]{korhatar }\end{DoxyParamCaption})}
+
+
+
+Setter függvény a könyv korhatárához. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em korhatar} & -\/ a könyv korhatára. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+konyv.\+h\item 
+konyv.\+cpp\end{DoxyCompactItemize}

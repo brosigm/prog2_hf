@@ -1,0 +1,110 @@
+\hypertarget{class_szepirodalmi}{}\doxysection{Szepirodalmi Class Reference}
+\label{class_szepirodalmi}\index{Szepirodalmi@{Szepirodalmi}}
+Inheritance diagram for Szepirodalmi\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_szepirodalmi}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_szepirodalmi_a608984a0c211ccd0ad22b179a3d284f6}{Szepirodalmi}} (const \mbox{\hyperlink{class_string}{String}} \&cim, int ev, int oldalszam, const \mbox{\hyperlink{class_string}{String}} \&leiras)
+\item 
+\mbox{\hyperlink{class_szepirodalmi_a4a02d18006cb04ba53e66930c5175da8}{Szepirodalmi}} (const \mbox{\hyperlink{class_szepirodalmi}{Szepirodalmi}} \&s)
+\begin{DoxyCompactList}\small\item\em Másoló konstruktor, ami egy szepirodalmi mű adatait másolja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_szepirodalmi_a03c79f55e381d467a7a9a9f4f8d5f82a}{set\+Leiras}} (const \mbox{\hyperlink{class_string}{String}} \&leiras)
+\begin{DoxyCompactList}\small\item\em Setter függvény a könyv leírásához. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_string}{String}} \mbox{\hyperlink{class_szepirodalmi_a02ac31d33727669efe9031158ff6753d}{get\+Leiras}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény a könyv leírásához. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_szepirodalmi_a795453f69e9cfa9787677c0ea18fa126}{kiir}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Kiírja a könyv adatait. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_szepirodalmi_a608984a0c211ccd0ad22b179a3d284f6}\label{class_szepirodalmi_a608984a0c211ccd0ad22b179a3d284f6}} 
+\index{Szepirodalmi@{Szepirodalmi}!Szepirodalmi@{Szepirodalmi}}
+\index{Szepirodalmi@{Szepirodalmi}!Szepirodalmi@{Szepirodalmi}}
+\doxysubsubsection{\texorpdfstring{Szepirodalmi()}{Szepirodalmi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Szepirodalmi\+::\+Szepirodalmi (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_string}{String}} \&}]{cim,  }\item[{int}]{ev,  }\item[{int}]{oldalszam,  }\item[{const \mbox{\hyperlink{class_string}{String}} \&}]{leiras }\end{DoxyParamCaption})}
+
+Konstruktor. 
+\begin{DoxyParams}{Parameters}
+{\em cim} & A könyv címe. \\
+\hline
+{\em ev} & A könyv kiadásának éve. \\
+\hline
+{\em oldalszam} & A könyv oldalainak száma. \\
+\hline
+{\em leiras} & A könyv leírását tárolja. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_szepirodalmi_a4a02d18006cb04ba53e66930c5175da8}\label{class_szepirodalmi_a4a02d18006cb04ba53e66930c5175da8}} 
+\index{Szepirodalmi@{Szepirodalmi}!Szepirodalmi@{Szepirodalmi}}
+\index{Szepirodalmi@{Szepirodalmi}!Szepirodalmi@{Szepirodalmi}}
+\doxysubsubsection{\texorpdfstring{Szepirodalmi()}{Szepirodalmi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Szepirodalmi\+::\+Szepirodalmi (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_szepirodalmi}{Szepirodalmi}} \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Másoló konstruktor, ami egy szepirodalmi mű adatait másolja. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & -\/ \mbox{\hyperlink{class_szepirodalmi}{Szepirodalmi}} mű, ami másolódik. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_szepirodalmi_a02ac31d33727669efe9031158ff6753d}\label{class_szepirodalmi_a02ac31d33727669efe9031158ff6753d}} 
+\index{Szepirodalmi@{Szepirodalmi}!getLeiras@{getLeiras}}
+\index{getLeiras@{getLeiras}!Szepirodalmi@{Szepirodalmi}}
+\doxysubsubsection{\texorpdfstring{getLeiras()}{getLeiras()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_string}{String}} Szepirodalmi\+::get\+Leiras (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter függvény a könyv leírásához. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_string}{String}} -\/ a könyv leírására. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_szepirodalmi_a795453f69e9cfa9787677c0ea18fa126}\label{class_szepirodalmi_a795453f69e9cfa9787677c0ea18fa126}} 
+\index{Szepirodalmi@{Szepirodalmi}!kiir@{kiir}}
+\index{kiir@{kiir}!Szepirodalmi@{Szepirodalmi}}
+\doxysubsubsection{\texorpdfstring{kiir()}{kiir()}}
+{\footnotesize\ttfamily void Szepirodalmi\+::kiir (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Kiírja a könyv adatait. 
+
+\begin{DoxyReturn}{Returns}
+standard kimenet a kiírás helye, nincs visszatérési érték. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_konyv_a65474b462f9aeca04cbe54a696ccb44a}{Konyv}}.
+
+\mbox{\Hypertarget{class_szepirodalmi_a03c79f55e381d467a7a9a9f4f8d5f82a}\label{class_szepirodalmi_a03c79f55e381d467a7a9a9f4f8d5f82a}} 
+\index{Szepirodalmi@{Szepirodalmi}!setLeiras@{setLeiras}}
+\index{setLeiras@{setLeiras}!Szepirodalmi@{Szepirodalmi}}
+\doxysubsubsection{\texorpdfstring{setLeiras()}{setLeiras()}}
+{\footnotesize\ttfamily void Szepirodalmi\+::set\+Leiras (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_string}{String}} \&}]{leiras }\end{DoxyParamCaption})}
+
+
+
+Setter függvény a könyv leírásához. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leiras} & -\/ a könyv leírására. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+konyv.\+h\item 
+konyv.\+cpp\end{DoxyCompactItemize}
