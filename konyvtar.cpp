@@ -3,6 +3,12 @@
 #include "memtrace.h"
 
 
+Konyvtar::Konyvtar(int kapacitas) : kapacitas(kapacitas) {
+    pData = new Konyv * [kapacitas];
+    size = 0;
+}
+
+
 Konyvtar::Konyvtar(const Konyvtar& kt) : kapacitas(kt.kapacitas) {
     pData = new Konyv*[kapacitas];
     size = 0;
@@ -11,7 +17,9 @@ Konyvtar::Konyvtar(const Konyvtar& kt) : kapacitas(kt.kapacitas) {
     }
 }
 
-//Konyvtar::Konyvtar(char * filename)
+Konyvtar::Konyvtar(char* filename, int kapacitas): pData(new Konyv*[0]), size(0), kapacitas(kapacitas) {
+    std::cout << "debug" << std::endl;
+}
 
 void Konyvtar::add(Konyv* k) {
         if (size < kapacitas) {
@@ -20,6 +28,7 @@ void Konyvtar::add(Konyv* k) {
         else
             throw "A konyvtar megtelt!";
 }
+
 
 
 void Konyvtar::remove(int index) {
@@ -61,3 +70,8 @@ Konyv* Konyvtar::operator[] (int index) const {
     else
         throw "A konyvtarban nincs ilyen indexu elem!";
 }
+
+void Konyvtar::sortABC() {};
+void Konyvtar::sortPages() {};
+void Konyvtar::sortYear() {};
+

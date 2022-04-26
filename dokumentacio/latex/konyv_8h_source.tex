@@ -1,0 +1,72 @@
+\hypertarget{konyv_8h_source}{}\doxysection{konyv.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{string5_8h}{string5.h}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}memtrace.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{//Ősosztály, ami egy könyv adatait tárolja.}}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_konyv}{Konyv}} \{}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_string}{String}} cim; }
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} ev; }
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} oldalszam; }
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_konyv_a21c3a88d91e5f5ae0a8b1699f0610144}{Konyv}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\&, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{26     \mbox{\hyperlink{class_konyv_a21c3a88d91e5f5ae0a8b1699f0610144}{Konyv}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_konyv}{Konyv}}\&);}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{34     \mbox{\hyperlink{class_string}{String}} \mbox{\hyperlink{class_konyv_a927526e36a270f6cd1c161c9fcdcc9a2}{getCim}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_konyv_a385371ddd48f3001bffa4eb40e530744}{getEv}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_konyv_a87d1ca796713863b16c7782c1597152b}{getOldalszam}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_konyv_a30b9884cfe827def7dc8364b59587151}{setCim}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\&);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_konyv_a7badadbbecb8e2da0ea6de4f6ce826d5}{setEv}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_konyv_a73cdf25b4df24fb3a015faec0e349be0}{setOldalszam}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{75     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_konyv_a65474b462f9aeca04cbe54a696ccb44a}{kiir}}(std::ostream\& os) \textcolor{keyword}{const};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_konyv}{\string~Konyv}}() \{\}}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{comment}{//A könyv leszármozott osztálya, ami egy kalandkönyv adatait tárolja.}}
+\DoxyCodeLine{81 \textcolor{keyword}{class }\mbox{\hyperlink{class_kalandkonyv}{Kalandkonyv}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_konyv}{Konyv}} \{}
+\DoxyCodeLine{82     \textcolor{keywordtype}{int} korhatar; }
+\DoxyCodeLine{83 \textcolor{keyword}{public}:}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{92     \mbox{\hyperlink{class_kalandkonyv_af43f82a56b0a2d9f6eeed97c3050bfc5}{Kalandkonyv}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\& cim, \textcolor{keywordtype}{int} ev, \textcolor{keywordtype}{int} oldalszam, \textcolor{keywordtype}{int} korhatar);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{99     \mbox{\hyperlink{class_kalandkonyv_af43f82a56b0a2d9f6eeed97c3050bfc5}{Kalandkonyv}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_kalandkonyv}{Kalandkonyv}}\& k);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_kalandkonyv_ab21c5d8d187831b1e773df7197265625}{setKorhatar}}(\textcolor{keywordtype}{int} korhatar);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_kalandkonyv_a79d189a2f5f7e69115fe89e3366f5e65}{getKorhatar}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{114     }
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_kalandkonyv_a9980d266a73420f3558f16bed0db0d34}{kiir}}(std::ostream\& os) \textcolor{keyword}{const};}
+\DoxyCodeLine{121 \};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{comment}{//A könyv leszármozott osztálya, ami egy szépirodalmi adatait tárolja.}}
+\DoxyCodeLine{124 \textcolor{keyword}{class }\mbox{\hyperlink{class_szepirodalmi}{Szepirodalmi}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_konyv}{Konyv}} \{}
+\DoxyCodeLine{125     \mbox{\hyperlink{class_string}{String}} leiras; }
+\DoxyCodeLine{126 \textcolor{keyword}{public}:}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{135     \mbox{\hyperlink{class_szepirodalmi_a608984a0c211ccd0ad22b179a3d284f6}{Szepirodalmi}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\& cim, \textcolor{keywordtype}{int} ev, \textcolor{keywordtype}{int} oldalszam, \textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\& leiras);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 }
+\DoxyCodeLine{143     \mbox{\hyperlink{class_szepirodalmi_a608984a0c211ccd0ad22b179a3d284f6}{Szepirodalmi}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_szepirodalmi}{Szepirodalmi}}\& s);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 }
+\DoxyCodeLine{151     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_szepirodalmi_a03c79f55e381d467a7a9a9f4f8d5f82a}{setLeiras}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}}\& leiras);}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{158     \mbox{\hyperlink{class_string}{String}} \mbox{\hyperlink{class_szepirodalmi_a02ac31d33727669efe9031158ff6753d}{getLeiras}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{165     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_szepirodalmi_a795453f69e9cfa9787677c0ea18fa126}{kiir}}(std::ostream\& os) \textcolor{keyword}{const};}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 \};}
+
+\end{DoxyCode}

@@ -3,9 +3,8 @@
 #include "string5.h"
 #include "memtrace.h"
 
-/**
- * Ősosztály, ami egy könyv adatait tárolja.
- */
+
+//Ősosztály, ami egy könyv adatait tárolja.
 class Konyv {
     String cim; ///< A könyv címe.
     int ev; ///< A könyv kiadásának éve.
@@ -17,15 +16,14 @@ public:
      * @param ev A könyv kiadásának éve.
      * @param oldalszam A könyv oldalainak száma.
      */
-    Konyv(const String& cim, int ev, int oldalszam) :
-        cim(cim), ev(ev), oldalszam(oldalszam) {}
+    Konyv(const String&, int, int);
 
     /**
      * @brief Másoló konstruktor, ami a könyv adatait másolja.
      * 
      * @param k - Könyv, ami másolódik.
      */
-    Konyv(const Konyv& k) : cim(k.cim), ev(k.ev), oldalszam(k.oldalszam) {}
+    Konyv(const Konyv&);
     
 
     /**
@@ -33,19 +31,19 @@ public:
      * 
      * @return String - a könyv címe.
      */
-    String getCim() const { return cim; }
+    String getCim() const;
     /**
      * @brief Getter függvény a könyv kiadásának évehez.
      * 
      * @return int - a könyv kiadásának éve.
      */
-    int getEv() const { return ev; }
+    int getEv() const;
     /**
      * @brief Getter függvény a könyv oldalainak számához.
      * 
      * @return int - a könyv oldalainak száma.
      */
-    int getOldalszam() const { return oldalszam; }
+    int getOldalszam() const;
 
 
     /**
@@ -53,35 +51,33 @@ public:
      * 
      * @param cim - a könyv címe.
      */
-    void setCim(const String& cim) { this->cim = cim; }
+    void setCim(const String&);
 
     /**
      * @brief Setter függvény a könyv kiadásának évehez.
      * 
      * @param ev - a könyv kiadásának éve.
      */
-    void setEv(int ev) { this->ev = ev; }
+    void setEv(int);
 
     /**
      * @brief Setter függvény a könyv oldalainak számához.
      * 
      * @param oldalszam - a könyv oldalainak száma.
      */
-    void setOldalszam(int oldalszam) { this->oldalszam = oldalszam; }
+    void setOldalszam(int);
 
     /**
      * @brief Kiírja a könyv adatait.
      * 
      * @return standard kimenet a kiírás helye, nincs visszatérési érték.
      */
-    virtual void kiir(std::ostream& os) const {
-        os << "Konyv: " << cim << " (" << ev << "), " << oldalszam << " oldal" << std::endl;
-    }
+    virtual void kiir(std::ostream& os) const;
 
     virtual ~Konyv() {}
 };
 
-
+//A könyv leszármozott osztálya, ami egy kalandkönyv adatait tárolja.
 class Kalandkonyv : public Konyv {
     int korhatar; ///< A könyv korhatárát tárolja.
 public:
@@ -93,41 +89,38 @@ public:
      * @param oldalszam A könyv oldalainak száma.
      * @param korhatar A könyv korhatárát tárolja.
      */
-    Kalandkonyv(const String& cim, int ev, int oldalszam, int korhatar) :
-        Konyv(cim, ev, oldalszam), korhatar(korhatar) {}
+    Kalandkonyv(const String& cim, int ev, int oldalszam, int korhatar);
 
     /**
      * @brief Másoló konstruktor, ami egy kalandkönyv adatait másolja.
      * 
      * @param k - Kalandkonyv, ami másolódik.
      */
-    Kalandkonyv(const Kalandkonyv& k) : Konyv(k), korhatar(k.korhatar) {}
+    Kalandkonyv(const Kalandkonyv& k);
 
     /**
      * @brief Setter függvény a könyv korhatárához.
      * 
      * @param korhatar - a könyv korhatára.
      */
-    void setKorhatar(int korhatar) { this->korhatar = korhatar; }
+    void setKorhatar(int korhatar);
 
     /**
      * @brief Getter függvény a könyv korhatárához.
      * 
      * @return int - a könyv korhatára.
      */
-    int getKorhatar() const { return korhatar; }
+    int getKorhatar() const;
     
     /**
      * @brief Kiírja a könyv adatait.
      * 
      * @return standard kimenet a kiírás helye, nincs visszatérési érték.
      */
-    void kiir(std::ostream& os) const {
-        os << "Kalandkonyv: " << Konyv::getCim() << " (" << Konyv::getEv << "), " << Konyv::getOldalszam << " oldal, " << korhatar << " ev" << std::endl;
-    }
+    void kiir(std::ostream& os) const;
 };
 
-
+//A könyv leszármozott osztálya, ami egy szépirodalmi adatait tárolja.
 class Szepirodalmi : public Konyv {
     String leiras; ///< A könyv leírását tárolja.
 public:
@@ -139,8 +132,7 @@ public:
      * @param oldalszam A könyv oldalainak száma.
      * @param leiras A könyv leírását tárolja.
      */
-    Szepirodalmi(const String& cim, int ev, int oldalszam, const String& leiras) :
-        Konyv(cim, ev, oldalszam), leiras(leiras) {}
+    Szepirodalmi(const String& cim, int ev, int oldalszam, const String& leiras);
 
 
     /**
@@ -148,7 +140,7 @@ public:
      * 
      * @param s - Szepirodalmi mű, ami másolódik.
      */
-    Szepirodalmi(const Szepirodalmi& s) : Konyv(s), leiras(s.leiras) {}
+    Szepirodalmi(const Szepirodalmi& s);
 
 
     /**
@@ -156,22 +148,20 @@ public:
      * 
      * @param leiras - a könyv leírására.
      */
-    void setLeiras(const String& leiras) { this->leiras = leiras; }
+    void setLeiras(const String& leiras);
 
     /**
      * @brief Getter függvény a könyv leírásához.
      * 
      * @return String - a könyv leírására.
      */
-    String getLeiras() const { return leiras; }
+    String getLeiras() const;
 
     /**
      * @brief Kiírja a könyv adatait.
      * 
      * @return standard kimenet a kiírás helye, nincs visszatérési érték.
      */
-    void kiir(std::ostream& os) const {
-        os << "Szepirodalmi: " << Konyv::getCim() << " (" << Konyv::getEv << "), " << Konyv::getOldalszam << " oldal, " << leiras << std::endl;
-    }
+    void kiir(std::ostream& os) const;
 
 };

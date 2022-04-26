@@ -1,0 +1,244 @@
+\hypertarget{memtrace_8h_source}{}\doxysection{memtrace.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*********************************}}
+\DoxyCodeLine{2 \textcolor{comment}{Memoriaszivargas-\/detektor}}
+\DoxyCodeLine{3 \textcolor{comment}{Keszitette: Peregi Tamas, BME IIT, 2011}}
+\DoxyCodeLine{4 \textcolor{comment}{            petamas@iit.bme.hu}}
+\DoxyCodeLine{5 \textcolor{comment}{Kanari:     Szeberenyi Imre, 2013.,}}
+\DoxyCodeLine{6 \textcolor{comment}{VS 2012:    Szeberényi Imre, 2015.,}}
+\DoxyCodeLine{7 \textcolor{comment}{mem\_dump:   2016.}}
+\DoxyCodeLine{8 \textcolor{comment}{inclue-\/ok:  2017., 2018., 2019., 2021.}}
+\DoxyCodeLine{9 \textcolor{comment}{*********************************/}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef MEMTRACE\_H}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define MEMTRACE\_H}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#if defined(MEMTRACE)}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{/*ha definiálva van, akkor a hibakat ebbe a fajlba írja, egyébkent stderr-\/re*/}}
+\DoxyCodeLine{17 \textcolor{comment}{/*\#define MEMTRACE\_ERRFILE MEMTRACE.ERR*/}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*ha definialva van, akkor futas kozben lancolt listat epit. Javasolt a hasznalata*/}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MEMTRACE\_TO\_MEMORY}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{/*ha definialva van, akkor futas kozben fajlba irja a foglalasokat*/}}
+\DoxyCodeLine{23 \textcolor{comment}{/*ekkor nincs ellenorzes, csak naplozas*/}}
+\DoxyCodeLine{24 \textcolor{comment}{/*\#define MEMTRACE\_TO\_FILE*/}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{/*ha definialva van, akkor a megallaskor automatikus riport keszul */}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MEMTRACE\_AUTO}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{/*ha definialva van, akkor malloc()/calloc()/realloc()/free() kovetve lesz*/}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MEMTRACE\_C}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#ifdef MEMTRACE\_C}}
+\DoxyCodeLine{33     \textcolor{comment}{/*ha definialva van, akkor free(NULL) nem okoz hibat*/}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    \#define ALLOW\_FREE\_NULL}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{38     \textcolor{comment}{/*ha definialva van, akkor new/delete/new[]/delete[] kovetve lesz*/}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    \#define MEMTRACE\_CPP}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#if defined(\_\_cplusplus) \&\& defined(MEMTRACE\_TO\_MEMORY)}}
+\DoxyCodeLine{43     \textcolor{comment}{/*ha definialva van, akkor atexit helyett objektumot hasznal*/}}
+\DoxyCodeLine{44     \textcolor{comment}{/*ajanlott bekapcsolni*/}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    \#define USE\_ATEXIT\_OBJECT}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{/******************************************/}}
+\DoxyCodeLine{49 \textcolor{comment}{/* INNEN NE MODOSITSD                     */}}
+\DoxyCodeLine{50 \textcolor{comment}{/******************************************/}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#ifdef NO\_MEMTRACE\_TO\_FILE}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{    \#undef MEMTRACE\_TO\_FILE}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifdef NO\_MEMTRACE\_TO\_MEMORY}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{    \#undef MEMTRACE\_TO\_MEMORY}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#ifndef MEMTRACE\_AUTO}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{    \#undef USE\_ATEXIT\_OBJECT}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{    \#define START\_NAMESPACE namespace memtrace \{}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{    \#define END\_NAMESPACE \} }\textcolor{comment}{/*namespace*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{    \#define TRACEC(func) memtrace::func}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{    \#include <new>}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{    \#define START\_NAMESPACE}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{    \#define END\_NAMESPACE}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{    \#define TRACEC(func) func}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{comment}{// THROW deklaráció változatai}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#if defined(\_MSC\_VER)}}
+\DoxyCodeLine{76   \textcolor{comment}{// VS rosszul kezeli az \_\_cplusplus makrot}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{  \#if \_MSC\_VER < 1900}}
+\DoxyCodeLine{78     \textcolor{comment}{// * nem biztos, hogy jó így *}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{    \#define THROW\_BADALLOC}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{    \#define THROW\_NOTHING}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{82     \textcolor{comment}{// C++11 vagy újabb}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{    \#define THROW\_BADALLOC noexcept(false)}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{    \#define THROW\_NOTHING noexcept}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{  \#if \_\_cplusplus < 201103L}}
+\DoxyCodeLine{88     \textcolor{comment}{// C++2003 vagy régebbi}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{    \#define THROW\_BADALLOC throw (std::bad\_alloc)}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{    \#define THROW\_NOTHING throw ()}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{92     \textcolor{comment}{// C++11 vagy újabb}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{    \#define THROW\_BADALLOC noexcept(false)}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{    \#define THROW\_NOTHING noexcept}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 START\_NAMESPACE}
+\DoxyCodeLine{99     \textcolor{keywordtype}{int} allocated\_blocks();}
+\DoxyCodeLine{100 END\_NAMESPACE}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#if defined(MEMTRACE\_TO\_MEMORY)}}
+\DoxyCodeLine{103 START\_NAMESPACE}
+\DoxyCodeLine{104         \textcolor{keywordtype}{int} mem\_check(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{105 END\_NAMESPACE}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#if defined(MEMTRACE\_TO\_MEMORY) \&\& defined(USE\_ATEXIT\_OBJECT)}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{110 START\_NAMESPACE}
+\DoxyCodeLine{111     \textcolor{keyword}{class }atexit\_class \{}
+\DoxyCodeLine{112         \textcolor{keyword}{private}:}
+\DoxyCodeLine{113             \textcolor{keyword}{static} \textcolor{keywordtype}{int} counter;}
+\DoxyCodeLine{114             \textcolor{keyword}{static} \textcolor{keywordtype}{int} err;}
+\DoxyCodeLine{115         \textcolor{keyword}{public}:}
+\DoxyCodeLine{116             atexit\_class() \{}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#if defined(CPORTA) \&\& !defined(CPORTA\_NOSETBUF)}}
+\DoxyCodeLine{118                 \textcolor{keywordflow}{if} (counter == 0) \{}
+\DoxyCodeLine{119                         setbuf(stdout, 0);}
+\DoxyCodeLine{120                         setbuf(stderr, 0);}
+\DoxyCodeLine{121                 \}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{123             counter++;}
+\DoxyCodeLine{124             \}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126             \textcolor{keywordtype}{int} check() \{}
+\DoxyCodeLine{127                 \textcolor{keywordflow}{if}(-\/-\/counter == 0)}
+\DoxyCodeLine{128                     err = mem\_check();}
+\DoxyCodeLine{129                 \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{130             \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132             \string~atexit\_class() \{}
+\DoxyCodeLine{133                 check();}
+\DoxyCodeLine{134             \}}
+\DoxyCodeLine{135     \};}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{keyword}{static} atexit\_class atexit\_obj;}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 END\_NAMESPACE}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#endif}\textcolor{comment}{/*MEMTRACE\_TO\_MEMORY \&\& USE\_ATEXIT\_OBJECT*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{comment}{/*Innentol csak a "{}normal"{} include eseten kell, kulonben osszezavarja a mukodest*/}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#ifndef FROM\_MEMTRACE\_CPP}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{146 \textcolor{preprocessor}{    \#include <iostream>}}
+\DoxyCodeLine{147 \textcolor{comment}{/* ide gyűjtjük a nemtrace-\/vel összeakadó headereket, hogy előbb legyenek */}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 \textcolor{preprocessor}{    \#include <fstream>}  \textcolor{comment}{// VS 2013 headerjében van deleted definició}}
+\DoxyCodeLine{150 \textcolor{preprocessor}{    \#include <sstream>}}
+\DoxyCodeLine{151 \textcolor{preprocessor}{    \#include <vector>}}
+\DoxyCodeLine{152 \textcolor{preprocessor}{    \#include <list>}}
+\DoxyCodeLine{153 \textcolor{preprocessor}{    \#include <map>}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{    \#include <algorithm>}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{    \#include <functional>}}
+\DoxyCodeLine{156 \textcolor{preprocessor}{    \#include <memory>}}
+\DoxyCodeLine{157 \textcolor{preprocessor}{    \#include <iomanip>}}
+\DoxyCodeLine{158 \textcolor{preprocessor}{    \#include <locale>}}
+\DoxyCodeLine{159 \textcolor{preprocessor}{    \#include <typeinfo>}}
+\DoxyCodeLine{160 \textcolor{preprocessor}{    \#include <ostream>}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{    \#include <stdexcept>}}
+\DoxyCodeLine{162 \textcolor{preprocessor}{    \#include <ctime>}}
+\DoxyCodeLine{163 \textcolor{preprocessor}{    \#if \_\_cplusplus >= 201103L}}
+\DoxyCodeLine{164 \textcolor{preprocessor}{        \#include <iterator>}}
+\DoxyCodeLine{165 \textcolor{preprocessor}{        \#include <regex>}}
+\DoxyCodeLine{166 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{167 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#ifdef MEMTRACE\_CPP}}
+\DoxyCodeLine{169     \textcolor{keyword}{namespace }std \{}
+\DoxyCodeLine{170         \textcolor{keyword}{typedef} void (*new\_handler)();}
+\DoxyCodeLine{171 \}}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#ifdef MEMTRACE\_C}}
+\DoxyCodeLine{175 START\_NAMESPACE}
+\DoxyCodeLine{176 \textcolor{preprocessor}{    \#undef malloc}}
+\DoxyCodeLine{177 \textcolor{preprocessor}{    \#define malloc(size) TRACEC(traced\_malloc)(size,\#size,\_\_LINE\_\_,\_\_FILE\_\_)}}
+\DoxyCodeLine{178     \textcolor{keywordtype}{void} * traced\_malloc(\textcolor{keywordtype}{size\_t} size, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *size\_txt, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file);}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{preprocessor}{    \#undef calloc}}
+\DoxyCodeLine{181 \textcolor{preprocessor}{    \#define calloc(count,size) TRACEC(traced\_calloc)(count, size, \#count"{},"{}}\#size,\_\_LINE\_\_,\_\_FILE\_\_)}
+\DoxyCodeLine{182     \textcolor{keywordtype}{void} * traced\_calloc(\textcolor{keywordtype}{size\_t} count, \textcolor{keywordtype}{size\_t} size, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *size\_txt, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{preprocessor}{    \#undef free}}
+\DoxyCodeLine{185 \textcolor{preprocessor}{    \#define free(p) TRACEC(traced\_free)(p, \#p,\_\_LINE\_\_,\_\_FILE\_\_)}}
+\DoxyCodeLine{186     \textcolor{keywordtype}{void} traced\_free(\textcolor{keywordtype}{void} * p, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *size\_txt, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file);}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{preprocessor}{    \#undef realloc}}
+\DoxyCodeLine{189 \textcolor{preprocessor}{    \#define realloc(old,size) TRACEC(traced\_realloc)(old,size,\#size,\_\_LINE\_\_,\_\_FILE\_\_)}}
+\DoxyCodeLine{190     \textcolor{keywordtype}{void} * traced\_realloc(\textcolor{keywordtype}{void} * old, \textcolor{keywordtype}{size\_t} size, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *size\_txt, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file);}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \textcolor{keywordtype}{void} mem\_dump(\textcolor{keywordtype}{void} \textcolor{keyword}{const} *mem, \textcolor{keywordtype}{size\_t} size, FILE* fp = stdout);}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 END\_NAMESPACE}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#endif}\textcolor{comment}{/*MEMTRACE\_C*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#ifdef MEMTRACE\_CPP}}
+\DoxyCodeLine{199 START\_NAMESPACE}
+\DoxyCodeLine{200 \textcolor{preprocessor}{    \#undef set\_new\_handler}}
+\DoxyCodeLine{201 \textcolor{preprocessor}{    \#define set\_new\_handler(f) TRACEC(\_set\_new\_handler)(f)}}
+\DoxyCodeLine{202     \textcolor{keywordtype}{void} \_set\_new\_handler(std::new\_handler h);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204     \textcolor{keywordtype}{void} set\_delete\_call(\textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file);}
+\DoxyCodeLine{205 END\_NAMESPACE}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{keywordtype}{void} * \textcolor{keyword}{operator} \textcolor{keyword}{new}(\textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file) THROW\_BADALLOC;}
+\DoxyCodeLine{208 \textcolor{keywordtype}{void} * \textcolor{keyword}{operator} \textcolor{keyword}{new}[](\textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{int} line, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * file) THROW\_BADALLOC;}
+\DoxyCodeLine{209 \textcolor{keywordtype}{void} * \textcolor{keyword}{operator} \textcolor{keyword}{new}(\textcolor{keywordtype}{size\_t} size) THROW\_BADALLOC;}
+\DoxyCodeLine{210 \textcolor{keywordtype}{void} * \textcolor{keyword}{operator} \textcolor{keyword}{new}[](\textcolor{keywordtype}{size\_t} size) THROW\_BADALLOC;}
+\DoxyCodeLine{211 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}(\textcolor{keywordtype}{void} * p)  THROW\_NOTHING;}
+\DoxyCodeLine{212 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}[](\textcolor{keywordtype}{void} * p) THROW\_NOTHING;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#if \_\_cplusplus >= 201402L}}
+\DoxyCodeLine{215 \textcolor{comment}{// sized delete miatt: http://www.open-\/std.org/jtc1/sc22/wg21/docs/papers/2013/n3536.html}}
+\DoxyCodeLine{216 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}(\textcolor{keywordtype}{void} * p, size\_t)  THROW\_NOTHING;}
+\DoxyCodeLine{217 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}[](\textcolor{keywordtype}{void} * p, size\_t) THROW\_NOTHING;}
+\DoxyCodeLine{218 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{comment}{/* Visual C++ 2012 miatt kell, mert háklis, hogy nincs megfelelő delete, bár senki sem használja */}}
+\DoxyCodeLine{221 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}(\textcolor{keywordtype}{void} *p, int, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *) THROW\_NOTHING;}
+\DoxyCodeLine{222 \textcolor{keywordtype}{void} \textcolor{keyword}{operator} \textcolor{keyword}{delete}[](\textcolor{keywordtype}{void} *p, int, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *) THROW\_NOTHING;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#define new new(\_\_LINE\_\_, \_\_FILE\_\_)}}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#define delete memtrace::set\_delete\_call(\_\_LINE\_\_, \_\_FILE\_\_),delete}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{preprocessor}{\#ifdef CPORTA}}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#define system(...)  }\textcolor{comment}{// system(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*MEMTRACE\_CPP*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*FROM\_MEMTRACE\_CPP*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#pragma message ( "{}MEMTRACE NOT DEFINED"{}} )}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*MEMTRACE*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*MEMTRACE\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

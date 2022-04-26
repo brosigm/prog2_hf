@@ -1,0 +1,12 @@
+digraph "Konyv::getCim"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="Konyv::getCim",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Getter függvény a könyv címéhez."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Kalandkonyv::kiir",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_kalandkonyv.html#a9980d266a73420f3558f16bed0db0d34",tooltip="Kiírja a könyv adatait."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Szepirodalmi::kiir",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_szepirodalmi.html#a795453f69e9cfa9787677c0ea18fa126",tooltip="Kiírja a könyv adatait."];
+}

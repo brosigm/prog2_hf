@@ -10,7 +10,6 @@
 
 #include "memtrace.h"
 
-
 class Konyvtar {
     Konyv** pData;
     int size;
@@ -20,18 +19,16 @@ public:
      * Konstruktor.
      * @param kapacitas A könyvtar kapacitása.
      */
-    Konyvtar(int kapacitas) : kapacitas(kapacitas) {
-        pData = new Konyv*[kapacitas];
-        size = 0;
-    }
+    Konyvtar(int);
 
 
+    
     /**
      * @brief Beolvas egy lemetett könyvtárat egy szöveges fileból.
      * 
      * @param filename - a file neve.
-     */
-    //Konyvtar(char * filename);
+    */
+    Konyvtar(char* filename, int kapacitas);
 
     /**
      * @brief Másoló konstruktor, ami a könyvtar adatait másolja.
@@ -80,6 +77,12 @@ public:
      * @return Konyv* - a könyvre mutató pointer.
      */
     Konyv* operator[](const int index) const;
+
+
+
+    void sortABC();
+    void sortYear();
+    void sortPages();
 };
 
 #endif
