@@ -6,20 +6,25 @@
 int main()
 {
 	TEST(Konyv, SetterGetter)
-		Konyv konyv("asdfsadf", 4, 5);
-		konyv.setCim("A");
-		konyv.setEv(1997);
-		konyv.setOldalszam(101);
-		EXPECT_EQ(konyv.getCim(), "A");
-		EXPECT_EQ(konyv.getEv(), 1997);
-		EXPECT_EQ(konyv.getOldalszam(), 101);
+		Konyv konyv1("asdfsadf", 4, 5);
+		konyv1.setCim("A");
+		konyv1.setEv(1997);
+		konyv1.setOldalszam(101);
+		EXPECT_EQ(konyv1.getCim(), "A");
+		EXPECT_EQ(konyv1.getEv(), 1997);
+		EXPECT_EQ(konyv1.getOldalszam(), 101);
 	END
 
 	TEST(Konyv, konstruktor)
-		Konyv konyv("BROSIG MARTON JANOS", 2022, 69);
-		EXPECT_EQ(konyv.getCim(), "BROSIG MARTON JANOS");
-		EXPECT_EQ(konyv.getEv(), 2022);
-		EXPECT_EQ(konyv.getOldalszam(), 69);
+		Konyv konyv2("BROSIG MARTON JANOS", 2022, 69);
+		EXPECT_EQ(konyv2.getCim(), "BROSIG MARTON JANOS");
+		EXPECT_EQ(konyv2.getEv(), 2022);
+		EXPECT_EQ(konyv2.getOldalszam(), 69);
 	END
 	
+	TEST(Konyv, masoloKonstruktor)
+		Konyv konyv3("BROSIG MARTON JANOS", 2022, 69);
+		Konyv konyv4 = konyv3;
+		EXPECT_EQ(konyv4, konyv3);
+	END
 }
