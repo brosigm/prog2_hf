@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/brosig/infocpp/nagyhzgit/nagyhf'
+make: 'konyvtar' is up to date.
+make: Leaving directory '/home/brosig/infocpp/nagyhzgit/nagyhf'
+ 
