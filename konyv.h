@@ -24,6 +24,12 @@ public:
      * @param k - Könyv, ami másolódik.
      */
     Konyv(const Konyv&);
+
+    /**
+     * @brief Létrehoz egy könyvet a beolvasott adatok alapján. (egy sorból)
+     * 
+     */
+    Konyv(std::istream&);
     
 
     /**
@@ -74,6 +80,15 @@ public:
      */
     virtual void kiir(std::ostream& os) const;
 
+
+    /**
+     * @brief Egyenlőség operátor, leszármazottakban felül kell definiálni.
+     * 
+     * @return true - a két könyv megegyezik 
+     * @return false - a két könyv nem egyezik meg
+     */
+    virtual bool operator==(const Konyv&) const;
+
     virtual ~Konyv() {}
 };
 
@@ -99,6 +114,12 @@ public:
     Kalandkonyv(const Kalandkonyv& k);
 
     /**
+     * @brief Létrehoz egy kalandkönyvet a beolvasott adatok alapján. (egy sorból)
+     * 
+     */
+    Kalandkonyv(std::istream&);
+
+    /**
      * @brief Setter függvény a könyv korhatárához.
      * 
      * @param korhatar - a könyv korhatára.
@@ -118,6 +139,14 @@ public:
      * @return standard kimenet a kiírás helye, nincs visszatérési érték.
      */
     void kiir(std::ostream& os) const;
+
+    /**
+     * @brief Egyenlőség operátor felüldefiniálása.
+     * 
+     * @return true - ha egyező a két könyv
+     * @return false - ha nem egyező a két könyv
+     */
+    bool operator==(const Kalandkonyv&) const;
 };
 
 //A könyv leszármozott osztálya, ami egy szépirodalmi adatait tárolja.
@@ -142,6 +171,12 @@ public:
      */
     Szepirodalmi(const Szepirodalmi& s);
 
+    /**
+     * @brief Létrehoz egy szepirodalmi műt a beolvasott adatok alapján. (egy sorból)
+     * 
+     */
+    Szepirodalmi(std::istream&);
+
 
     /**
      * @brief Setter függvény a könyv leírásához.
@@ -163,5 +198,13 @@ public:
      * @return standard kimenet a kiírás helye, nincs visszatérési érték.
      */
     void kiir(std::ostream& os) const;
+
+    /**
+     * @brief Egyenlőség operátor felüldefiniálása.
+     * 
+     * @return true - ha egyező a két könyv
+     * @return false - ha nem egyező a két könyv
+     */
+    bool operator==(const Szepirodalmi&) const;
 
 };

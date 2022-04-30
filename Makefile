@@ -6,7 +6,7 @@
 
 PROG = konyvtar
 SRCS = konyvtar.cpp konyv.cpp string5.cpp main.cpp memtrace.cpp
-HDRS = konyvtar.h string5.h memtrace.h konyv.h
+HDRS = konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h
 OBJS = $(SRCS:.cpp=.o)
 
 CXXFLAGS = -ggdb -pedantic -Wall -DMEMTRACE

@@ -28,14 +28,8 @@ public:
      * 
      * @param filename - a file neve.
     */
-    Konyvtar(char* filename, int kapacitas);
+    Konyvtar(const char* filename, int kapacitas);
 
-    /**
-     * @brief Másoló konstruktor, ami a könyvtar adatait másolja.
-     * 
-     * @param kt - Könyvtar, ami másolódik.
-     */
-    Konyvtar(const Konyvtar&);
 
     /**
      * @brief Hozzáad egy könyvet a könyvtarhoz.
@@ -64,6 +58,22 @@ public:
      */
     void print(std::ostream&) const;
 
+    /**
+     * @brief Kiírja a könyvtar tartalmát egy fileba.
+     * 
+     * @param filename - a fájl neve.
+     * @return true - ha sikeresen kiírta a fileba.
+     * @return false - ha nem sikerült kiírni a fileba.
+     */
+    bool printFile(const char* filename) const;
+
+    /**
+     * @brief Visszaadja a könyvtár jelenlegi kapacitását
+     * 
+     * @return int - a kapacitás
+     */
+    int getSize() const;
+
 
     /**
      * @brief Destruktor.
@@ -78,11 +88,33 @@ public:
      */
     Konyv* operator[](const int index) const;
 
+    /**
+     * @brief Egyenlőség operátor könyvtárakra, a könyvek sorrendje is számít.
+     * 
+     * @return true - a két könyvtár megegyezik.
+     * 
+     * @return false - a két könyvtár nem egyezik.
+     */
+    bool operator==(const Konyvtar&) const;
 
-
-    void sortABC();
-    void sortYear();
-    void sortPages();
+    template<typename PRED>
+    void sortGEN(PRED func){
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size - 1; j++){
+            if(func(pData[j], pData[j + 1])){
+                Konyv* temp = pData[j];
+                pData[j] = pData[j+1];
+                pData[j+1] = temp;
+            }
+        }
+    }
+}
 };
+
+
+bool compareABC(Konyv const* k1, Konyv const* k2);
+bool compareYear(Konyv const* k1, Konyv const* k2);
+bool comparePages(Konyv const* k1, Konyv const* k2);
+
 
 #endif

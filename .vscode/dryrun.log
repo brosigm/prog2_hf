@@ -1,5 +1,10 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/brosig/infocpp/nagyhzgit/nagyhf'
-make: 'konyvtar' is up to date.
+g++ -ggdb -pedantic -Wall -DMEMTRACE   -c -o konyvtar.o konyvtar.cpp
+g++ -ggdb -pedantic -Wall -DMEMTRACE   -c -o konyv.o konyv.cpp
+g++ -ggdb -pedantic -Wall -DMEMTRACE   -c -o string5.o string5.cpp
+g++ -ggdb -pedantic -Wall -DMEMTRACE   -c -o main.o main.cpp
+g++ -ggdb -pedantic -Wall -DMEMTRACE   -c -o memtrace.o memtrace.cpp
+g++ -o konyvtar konyvtar.o konyv.o string5.o main.o memtrace.o
 make: Leaving directory '/home/brosig/infocpp/nagyhzgit/nagyhf'
  

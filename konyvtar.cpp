@@ -9,16 +9,30 @@ Konyvtar::Konyvtar(int kapacitas) : kapacitas(kapacitas) {
 }
 
 
-Konyvtar::Konyvtar(const Konyvtar& kt) : kapacitas(kt.kapacitas) {
-    pData = new Konyv*[kapacitas];
-    size = 0;
-    for (int i = 0; i < kt.size; i++) {
-        pData[i] = new Konyv(*(kt[i]));
+Konyvtar::Konyvtar(const char* filename, int kapacitas): pData(new Konyv*[kapacitas]), size(0), kapacitas(kapacitas) {
+    std::ifstream file(filename);
+    if (file.is_open()) {
+        while (!file.eof()) {
+            String tipus;
+            file >> tipus;
+            if(tipus == "Konyv"){
+                Konyv* k = new Konyv(file);
+                add(k);
+            }
+            else if(tipus == "Kalandkonyv"){
+                Kalandkonyv* k = new Kalandkonyv(file);
+                add(k);
+            }
+            else if(tipus == "Szepirodalmi"){
+                Szepirodalmi* k = new Szepirodalmi(file);
+                add(k);
+            }
+            else if(strcmp(tipus.c_str(), "\n") == 0){
+                throw "Hibas tipus!";
+            }
+        }
+        file.close();
     }
-}
-
-Konyvtar::Konyvtar(char* filename, int kapacitas): pData(new Konyv*[0]), size(0), kapacitas(kapacitas) {
-    std::cout << "debug" << std::endl;
 }
 
 void Konyvtar::add(Konyv* k) {
@@ -57,6 +71,21 @@ void Konyvtar::print(std::ostream& os) const{
     }
 }
 
+bool Konyvtar::printFile(const char* filename) const{
+    std::ofstream f(filename);
+    if(f)
+        print(f);
+    else
+        return false;
+    f.close();
+    return true;
+}
+
+
+int Konyvtar::getSize() const{
+    return kapacitas;
+}
+
 Konyvtar::~Konyvtar() {
     for (int i = 0; i < size; i++) {
         delete pData[i];
@@ -71,7 +100,24 @@ Konyv* Konyvtar::operator[] (int index) const {
         throw "A konyvtarban nincs ilyen indexu elem!";
 }
 
-void Konyvtar::sortABC() {};
-void Konyvtar::sortPages() {};
-void Konyvtar::sortYear() {};
+bool Konyvtar::operator==(const Konyvtar& kt) const {
+    if (size != kt.size)
+        return false;
+    for (int i = 0; i < size; i++) {
+        if (!(*pData[i] == *kt[i]))
+            return false;
+    }
+    return true;
+}
 
+bool compareABC(Konyv const* k1, Konyv const* k2){
+    return strcmp((k1->getCim()).c_str(), (k2->getCim()).c_str()) > 0;
+}
+
+bool compareYear(Konyv const* k1, Konyv const* k2){
+    return k1->getEv() > k2->getEv();
+}
+
+bool comparePages(Konyv const* k1, Konyv const* k2){
+    return k1->getOldalszam() > k2->getOldalszam();
+}

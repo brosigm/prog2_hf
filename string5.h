@@ -1,108 +1,161 @@
 #ifndef STRING_H
 #define STRING_H
-/**
- * \file string5.h
- *
- * Ez a fájl tartalmazza a String osztály deklarációját és inline függvényeit.
- */
+ #include <iostream>
 
-#include <iostream>
 
 /**
- * String osztály.
- * A pData-ban vannak a karakterek (a lezáró nullával együtt),
- * len a hossz.A hosszba nem számít bele a lezáró nulla.
+ * A String osztály.
+ * A 'pData'-ban vannak a karakterek (a lezáró nullával együtt), 'len' a hossza.
+ * A hosszba nem számít bele a lezáró nulla.
  */
 class String {
-    char *pData;    ///< pointer az adatra
-    size_t len;     ///< hossz lezáró nulla nélkül
+    char *pData;        ///< pointer az adatra
+    size_t len;         ///< hossz lezáró nulla nélkül
 public:
-
-
-    /// Hossz lekérdezése.
-    /// @return Sztring hossza
-	size_t size() const { return len; }
-
-
-    /// Default konstruktor
-    /// String() :pData(0), len(0) {}
-    /// helyett ""-val inicializáljuk a const char*-osban
-
-    /// C-sztringet ad vissza
-    /// @return pinter egy '\0'-val lezárt (C) sztringre
-    const char* c_str() const { return pData;}
-
-    /// Konstruktor egy char karakterből
-    /// @param ch - karakter
-    String(char ch);
-
-    /// Konstruktor egy nullával lezárt char sorozatból
-    /// Ez a deafault is!
-    /// @param p - pointer egy C sztringre
-    String(const char *p = "");
-
-    /// Másoló konstruktor
-    /// @param s1 - String, amiből létrehozzuk az új String-et
-    String(const String& s1);
-
-    /// Destruktor
-    virtual ~String() { delete[] pData; }
-
-    /// Kiírunk egy Stringet (debug célokra)
-    /// Előtte kiírunk egy tetszőleges szöveget.
-    /// @param txt - nullával lezárt szövegre mutató pointer
-    void printDbg(const char *txt = "") const {
-        std::cout << txt << "[" << len << "], "
-                  << (pData ? pData : "(NULL)") << std::endl;
+    /**
+     * @brief Konstruktor, ami létrehozza egy üres stringet.
+     * 
+     */
+    String(): len(0){
+        pData = new char[1];
+        pData[0] = '\0';
     }
 
-    /// Értékadó operátor.
-    /// @param rhs_s - jobboldali String
-    /// @return baoldali (módosított) string (referenciája)
-    String& operator=(const String& rhs_s);
+    /**
+     * @brief Megadja a string hosszát.
+     * 
+     * @return size_t - a string hossza.
+     */
+    size_t size() const { return len; }
 
-    /// Két Stringet összefűz
-    /// @param rhs_s - jobboldali String
-    /// @return új String, ami tartalmazza a két stringet egmás után
+    /**
+     * @brief Visszaad egy \0 val lezárt karaktersorozatot.
+     * 
+     * @return const char* 
+     */
+    const char* c_str() const { return pData;}
+
+    /**
+     * @brief Konstruktor, ami egy karakterből hoz létre egy String objektumot
+     * 
+     * @param c 
+     */
+    String(char c);
+
+    /**
+     * @brief Konstruktor, ami egy String objektumot hoz létre karaktersorozatra mutató pointer segítségével.
+     * 
+     * @param c - a karaktersorozat.
+     */
+    String(const char *c);
+
+    /**
+     * @brief String osztály desktruktora
+     * 
+     */
+    ~String();
+
+    /**
+     * @brief Másoló konstruktor a String osztályhoz.
+     * 
+     * @param tmp 
+     */
+    String(const String &tmp);
+
+    /**
+     * @brief értékadás operátor a String osztályhoz.
+     * 
+     * @param other - a másolandó String objektum.
+     * @return String& 
+     */
+    String& operator=(const String& other);
+
+    /**
+     * @brief Összeadás operátor a String osztályhoz.
+     * 
+     * @param rhs_s - a hozzáadandó String objektum.
+     * @return String 
+     */
     String operator+(const String& rhs_s) const ;
 
-    /// Sztrinhez karaktert összefűz
-    /// @param rhs_c - jobboldali karakter
-    /// @return új String, ami tartalmazza a sztringet és a karaktert egymás után
+    /**
+     * @brief Karakter hozzáfűzés egy string objektumhoz.
+     * 
+     * @param rhs_c - a hozzáfűzendő karakter.
+     * @return String 
+     */
     String operator+(char rhs_c) const { return *this + String(rhs_c);}
 
-    /// A string egy megadott indexű elemének REFERENCIÁJÁVAL tér vissza.
-    /// @param idx - charakter indexe
-    /// @return karakter (referencia)
-    ///         Indexelési hiba esetén const char* kivételt dob.
+    /**
+     * @brief Indexelő operátor a String osztályhoz.
+     * 
+     * @param idx 
+     * @return char& 
+     */
     char& operator[](unsigned int idx);
 
-    /// A string egy megadott indexű elemének REFERENCIÁJÁVAL tér vissza.
-    /// @param idx - karakter indexe
-    /// @return karakter (referencia)
-    ///         Indexelési hiba esetén const char* kivételt dob (assert helyett).
+    /**
+     * @brief Indexelő operátor a String osztályhoz.
+     * 
+     * @param idx 
+     * @return char 
+     */
     const char& operator[](unsigned int idx) const;
+
+
 };
 
-/// Globális függvények:
-/// kiír az ostream-re
-/// @param os - ostream típusú objektum
-/// @param s0 - String, amit kiírunk
-/// @return os
+/**
+ * @brief Inserter operátor a String osztályhoz.
+ * 
+ * @param os - a kiírás helye
+ * @param s0 - a kiírandó String objektum
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& os, const String& s0);
 
-/// Beolvas az istream-ről egy szót egy string-be.
-/// @param is - istream típusú objektum
-/// @param s0 - String, amibe beolvas
-/// @return is
+/**
+ * @brief Extractor operátor a String osztályhoz.
+ * 
+ * @param is - a beolvasás helye
+ * @param s0 - a beolvasandó String objektum
+ * @return std::istream& 
+ */
 std::istream& operator>>(std::istream& is, String& s0);
 
-/// Karakterhez sztringet fűz
-/// @param ch - karakter
-/// @param str - String
-/// @return új String, ami tartalmazza a karaktert és a sztringet egymás után
+/**
+ * @brief Karakter és string összeadását megvalósító függvény.
+ * 
+ * @param ch - a karakter
+ * @param str - a string
+ * @return String 
+ */
 inline String operator+(char ch, const String& str) { return String(ch) + str; }
 
+/**
+ * @brief Összehasonlító operátor a String osztályhoz.
+ * 
+ * @param s1 
+ * @param s2 
+ * @return true 
+ * @return false 
+ */
 bool operator==(const String& s1, const String& s2);
+
+/**
+ * @brief Nagyobb-e operátor a String osztályhoz.
+ * 
+ * @param s1 
+ * @param s2 
+ * @return true 
+ * @return false 
+ */
+bool operator>(const String& s1, const String& s2);
+
+
+
+
+
+
 
 #endif

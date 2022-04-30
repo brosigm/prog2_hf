@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2014 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Apr 26 13:02:22 2022
+# Make data base, printed on Sat Apr 30 20:43:48 2022
 
 # Variables
 
@@ -49,11 +47,9 @@ SNAP_DATA = /var/snap/code/94
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /snap/code/94/usr/share/code/code
-# environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 9)
-HDRS = konyvtar.h string5.h memtrace.h konyv.h
+HDRS = konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
@@ -65,7 +61,7 @@ MAKEFILE_LIST :=  Makefile
 # environment
 GENICAM_GENTL64_PATH = /opt/pylon/lib/gentlproducer/gtl:/opt/pylon/lib/pylonCXP/bin
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/tabby.desktop
 # environment
 USERNAME = brosig
 # makefile (from 'Makefile', line 12)
@@ -93,9 +89,11 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = hu_HU.UTF-8
 # environment
-VSCODE_CWD = /home/brosig
+VSCODE_CWD = /home/brosig/infocpp/nagyhzgit/nagyhf
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/94/usr/share/glib-2.0/schemas
+# environment
+PYLON_ROOT = /opt/pylon
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -135,13 +133,13 @@ GDK_PIXBUF_MODULEDIR = /snap/code/94/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.1
 # environment
 CMAKE_PREFIX_PATH = /opt/ros/melodic
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 ROS_DISTRO = melodic
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4124
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8143
 # automatic
 %F = $(notdir $%)
 # environment
@@ -161,7 +159,7 @@ SSH_AGENT_PID = 1630
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+ORIGINAL_XDG_CURRENT_DESKTOP = Unity
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
@@ -219,7 +217,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-43993b44-9c89-443d-8881-f1d6ddeec3b7.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7b2aa779-51d8-4deb-a5e3-a74abbf2b692.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -241,15 +239,15 @@ LC_TELEPHONE = hu_HU.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-PYLON_ROOT = /opt/pylon
+OLDPWD = /home/brosig/infocpp/nagyhzgit
+# environment
+TERM_PROGRAM = Tabby
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-b2bdf7cc-1.66.2-main.sock
-# environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
 PYTHONPATH = /opt/ros/melodic/lib/python2.7/dist-packages
 # makefile
@@ -291,8 +289,10 @@ ROS_MASTER_URI = http://localhost:11311
 # environment
 SNAP_NAME = code
 # environment
- 
 EDITOR = nano -w
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 # environment
 LC_ALL = C
 # environment
@@ -318,11 +318,15 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LC_ADDRESS = hu_HU.UTF-8
 # environment
+TABBY_PLUGINS = 
+# environment
 LANG = C
 # environment
-VSCODE_PID = 4173
+TERM = xterm-256color
+# environment
+VSCODE_PID = 26638
 # variable set hash-table stats:
-# Load=154/1024=15%, Rehash=0, Collisions=35/185=19%
+# Load=156/1024=15%, Rehash=0, Collisions=36/187=19%
 
 # Pattern-specific Variable Values
 
@@ -347,7 +351,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-konyvtar.o: konyvtar.h string5.h memtrace.h konyv.h Makefile
+konyvtar.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -379,11 +383,11 @@ memtrace.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-26 13:02:00.46003835
+#  Last modified 2022-04-30 20:43:46.887497868
 #  File has been updated.
 #  Successfully updated.
 
-string5.o: konyvtar.h string5.h memtrace.h konyv.h Makefile
+string5.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -400,7 +404,7 @@ konyvtar.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-konyv.o: konyvtar.h string5.h memtrace.h konyv.h Makefile
+konyv.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -412,7 +416,13 @@ clean:
 #  recipe to execute (from 'Makefile', line 20):
 	rm -f $(OBJS) $(PROG)
 
-memtrace.o: konyvtar.h string5.h memtrace.h konyv.h Makefile
+# Not a target:
+gtest_lite.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+memtrace.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -423,25 +433,25 @@ string5.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-main.o: konyvtar.h string5.h memtrace.h konyv.h Makefile
+main.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/41=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/43=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 378 B / avg = 10 B
-# current buf: size = 8162 B / used = 378 B / count = 36 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 391 B / avg = 10 B
+# current buf: size = 8162 B / used = 391 B / count = 37 / avg = 10 B
 
-# strcache performance: lookups = 64 / hit rate = 43%
+# strcache performance: lookups = 65 / hit rate = 43%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=1/64=2%
-# Finished Make data base on Tue Apr 26 13:02:22 2022
+# Load=37/8192=0%, Rehash=0, Collisions=1/65=2%
+# Finished Make data base on Sat Apr 30 20:43:48 2022
 
  
