@@ -36,11 +36,13 @@ Konyvtar::Konyvtar(const char* filename, int kapacitas): pData(new Konyv*[kapaci
 }
 
 void Konyvtar::add(Konyv* k) {
-        if (size < kapacitas) {
-            pData[size++] = k;
-        }
-        else
-            throw "A konyvtar megtelt!";
+    if (size < kapacitas) {
+        pData[size++] = k;
+    }
+    else {
+        delete k;
+        throw "A konyvtar megtelt!";
+    }
 }
 
 

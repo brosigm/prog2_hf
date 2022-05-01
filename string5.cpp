@@ -1,9 +1,16 @@
+#ifdef _MSC_VER
+// MSC ne adjon figyelmeztető üzenetet a stringkezelő függvényekre.
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include <iostream>             // Kiíratáshoz
 #include <cstring>              // Sztringműveletekhez
 
 #include "memtrace.h"           // a standard headerek után kell lennie
 #include "string5.h"
+
+
+
 
 
     String::String(char c){
