@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Apr 30 20:43:48 2022
+# Make data base, printed on Sun May  1 09:29:43 2022
 
 # Variables
 
@@ -105,7 +105,7 @@ CLUTTER_IM_MODULE = xim
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/brosig:@/tmp/.ICE-unix/1532,unix/brosig:/tmp/.ICE-unix/1532
+SESSION_MANAGER = local/brosig:@/tmp/.ICE-unix/1577,unix/brosig:/tmp/.ICE-unix/1577
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -139,7 +139,7 @@ ROS_DISTRO = melodic
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 8143
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2032
 # automatic
 %F = $(notdir $%)
 # environment
@@ -155,7 +155,7 @@ PWD = /home/brosig/infocpp/nagyhzgit/nagyhf
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1630
+SSH_AGENT_PID = 1675
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
@@ -177,7 +177,7 @@ VSCODE_CODE_CACHE_PATH = /home/brosig/.config/Code/CachedData/dfd34e8260c270da74
 # environment
 LOGNAME = brosig
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -217,7 +217,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7b2aa779-51d8-4deb-a5e3-a74abbf2b692.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f651830d-e823-4431-9c47-5e33767a2e52.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -238,8 +238,6 @@ ROSLISP_PACKAGE_DIRECTORIES =
 LC_TELEPHONE = hu_HU.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/brosig/infocpp/nagyhzgit
 # environment
 TERM_PROGRAM = Tabby
 # default
@@ -278,6 +276,9 @@ TEXTDOMAINDIR = /usr/share/locale/
 MAKEFILES := 
 # environment
 SNAP_COOKIE = fEPAOpSrud7r5yqVUO4NzzalLOXtWM-QAzpbZDT9eiiAvngQA0Pb
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 # environment
 LC_NUMERIC = hu_HU.UTF-8
 # automatic
@@ -290,9 +291,6 @@ ROS_MASTER_URI = http://localhost:11311
 SNAP_NAME = code
 # environment
 EDITOR = nano -w
- 
-make: *** No rule to make target 'all'.  Stop.
-
 # environment
 LC_ALL = C
 # environment
@@ -324,9 +322,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 26638
+VSCODE_PID = 2256
 # variable set hash-table stats:
-# Load=156/1024=15%, Rehash=0, Collisions=36/187=19%
+# Load=155/1024=15%, Rehash=0, Collisions=36/186=19%
 
 # Pattern-specific Variable Values
 
@@ -334,9 +332,9 @@ VSCODE_PID = 26638
 
 # Directories
 
-# . (device 66310, inode 1835027): 29 files, no impossibilities.
+# . (device 66310, inode 1835027): 24 files, no impossibilities.
 
-# 29 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -449,9 +447,9 @@ main.o: konyvtar.h string5.h konyv.h memtrace.h gtest_lite.h Makefile
 # strcache buffers: 1 (0) / strings = 37 / storage = 391 B / avg = 10 B
 # current buf: size = 8162 B / used = 391 B / count = 37 / avg = 10 B
 
-# strcache performance: lookups = 65 / hit rate = 43%
+# strcache performance: lookups = 60 / hit rate = 38%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=1/65=2%
-# Finished Make data base on Sat Apr 30 20:43:48 2022
+# Load=37/8192=0%, Rehash=0, Collisions=1/60=2%
+# Finished Make data base on Sun May  1 09:29:43 2022
 
  

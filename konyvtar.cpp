@@ -110,6 +110,8 @@ bool Konyvtar::operator==(const Konyvtar& kt) const {
     return true;
 }
 
+
+
 bool compareABC(Konyv const* k1, Konyv const* k2){
     return strcmp((k1->getCim()).c_str(), (k2->getCim()).c_str()) > 0;
 }

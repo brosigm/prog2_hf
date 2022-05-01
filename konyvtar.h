@@ -97,6 +97,12 @@ public:
      */
     bool operator==(const Konyvtar&) const;
 
+    /**
+     * @brief Sablon függvény, ami prediktátum segítségével rendezi a könyvtárat, a paraméteként átadott függvényt használva.
+     * 
+     * @tparam PRED 
+     * @param func 
+     */
     template<typename PRED>
     void sortGEN(PRED func){
     for(int i = 0; i < size; i++){
@@ -111,9 +117,34 @@ public:
 }
 };
 
-
+/**
+ * @brief Összehasonlít két könyvet, hogy melyikük van előbb a könyv címe alapján.
+ * 
+ * @param k1 
+ * @param k2 
+ * @return true 
+ * @return false 
+ */
 bool compareABC(Konyv const* k1, Konyv const* k2);
+
+/**
+ * @brief Összehasonlítja a két könyvet, hogy melyikük van előbb a könyv kiadási éve alapján.
+ * 
+ * @param k1 
+ * @param k2 
+ * @return true 
+ * @return false 
+ */
 bool compareYear(Konyv const* k1, Konyv const* k2);
+
+/**
+ * @brief Összehasonlít két könyvet, hogy melyikük van előbb oldalak száma alapján.
+ * 
+ * @param k1 
+ * @param k2 
+ * @return true 
+ * @return false 
+ */
 bool comparePages(Konyv const* k1, Konyv const* k2);
 
 
